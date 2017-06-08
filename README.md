@@ -33,8 +33,9 @@ Models can be defined by using variables, layers and scopes.
 ### Variables 
 Creation of a ```weight```variable : initialize it using a truncated normal distribution, regularize it with an ```l2_loss```and place it on the ``` CPU ```
 ```
-weights=slim.variable('weights', shape [10,10,3,3], 
-initializer=tf.truncated_normal_initializer(stfdev=0.1), 
+weights=slim.variable('weights', 
+shape [10,10,3,3], 
+initializer=tf.truncated_normal_initializer(stddev=0.1), 
 regularizer=slim.l2_regularizer(0.05), 
 device='/CPU:0')
 
