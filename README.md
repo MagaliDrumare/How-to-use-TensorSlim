@@ -31,9 +31,10 @@ TF-Slim is composed of several parts which were design to exist independently: a
 Models can be defined by using variables, layers and scopes. 
 
 ### Variables 
-Creation of a ```weight```variable : initialize it using a truncated normal distribution, regularize it with an ```l2_loss```and place it on the ``` CPU ```
+Creation of a ```weight```variable : initialize it using a truncated normal distribution, regularize it with an ```l2_loss```and place it on the ``` CPU ```. With RF-Slim : model variables are  variables that represent parameters of the model. 
+
 ```
-#New with RF-Slim : model variables are  variables that represent parameters of the model 
+
 weights=slim.model_variable('weights', 
 shape [10,10,3,3], 
 initializer=tf.truncated_normal_initializer(stddev=0.1), 
