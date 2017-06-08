@@ -19,4 +19,6 @@ TF-Slim is a library that makes building, training, evaluation neural network si
 
 * Several widely used computer vision models have been developped in slim and are available to the public  : [Alexnet](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/slim/python/slim/nets/alexnet.py),  [Inception](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/slim/python/slim/nets/inception.py), [Resnet](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/slim/python/slim/nets/resnet_v2.py), [VGG](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/slim/python/slim/nets/vgg_test.py)
 
+## What are the various components of TF-Slim? 
 
+TF-Slim is composed of several parts which were design to exist independently: arg_scope, data, evaluation, layers, learning, losses, metrics, nets, queues, regularizers, variables. 
