@@ -1,6 +1,6 @@
 # TensorFlow-Slim 
 
-This README is a summary of this README aboout TF-slim : https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/slim
+This README is a summary of this README aboout TF-slim written by Sergio Guadarrama and Nathan Siberman https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/slim
 
 
 TF-Slim is a lightweight library for defining, training and avaluating complex models in TensorFlow. 
@@ -31,7 +31,7 @@ TF-Slim is composed of several parts which were design to exist independently: a
 Models can be defined by using variables, layers and scopes. 
 
 ### Variables 
-Creation of a ```weight```variable : initialize it using a truncated normal distribution, regularize it with an ```l2_loss```and place it on the ``` CPU ```. With TF-Slim : model variables are  variables that represent parameters of the model. 
+Creation of a ```weight```variable : initialize it using a truncated normal distribution, regularize it with an ```l2_loss```and place it on the ``` CPU ```. New with TF-Slim : **model variables** which are  variables that represent parameters of the model. 
 
 ```python
 weights=slim.model_variable('weights', 
