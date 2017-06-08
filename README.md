@@ -1,1 +1,1 @@
-# TensorSlim-
+# TensorFlow-Slim 
