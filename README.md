@@ -6,3 +6,10 @@ Components of TF-Slim can be freely miwed with native tensorflow, as well as oth
 
 ## Usage 
 
+
+import 
+```
+import tensorflow.contrib.slim as slim 
+
+```
+
