@@ -64,9 +64,9 @@ TF_slim also provides two meta-operation called ```repeat```and ```stack```that 
 ```python
 
 net=....
-net=slim.conv2d[net, 256, [3,3], scope='conv3_1')
-net=slim.conv2d[net, 256, [3,3], scope='conv3_2')
-net=slim.conv2d[net, 256, [3,3], scope='conv3_2')
+net=slim.conv2d(net, 256, [3,3], scope='conv3_1')
+net=slim.conv2d(net, 256, [3,3], scope='conv3_2')
+net=slim.conv2d(net, 256, [3,3], scope='conv3_2')
 net=slim.max_pool_2d(net, [2,2], scope='pool2')
 
 can be replaced by 
@@ -77,6 +77,16 @@ net=slim.max_pool_2d(net, [2,2], scope='pool2']
 ```
 
 * ```slim.stack ```
+
+```python
+
+x=slim.conv2d(x,32,[3,3], scope='core/core_1')
+x=slim.conv2d(x,32,[1,1], scope='core/core_2')
+x=slim.conv2d(x,64,[3,3], scope='core/core_3')
+x=slim.conv2d(x,64,[1,1], scope='core/core_4')
+
+can be replaced by 
+x=slim.stack(x, slim.conv2d,[(32,[3,3]),(32,[1,1]),(64,[3,3]),(64,[1,1]), scope='core']
 
 
 
