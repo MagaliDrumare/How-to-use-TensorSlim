@@ -146,11 +146,7 @@ def vgg16 (inputs):
       weights_regularizer=slim.l2.regularizer(0.0005): 
       
       net=slim.repeat(inputs, 2, slim.conv2d, 64, [3,3], scope='conv1')
-      net=max.pool2d(net,[2,2], scope='pool1')
-      net=slim.repeat(net, 2, slim.conv2d, 128, [3,3], scope='conv2')
-      net=max.pool2d(net,[2,2], scope='pool2')
-      net=slim.repeat(net, 3, slim.conv2d, 256, [3,3], scope='conv3')
-      net=max.pool2d(net,[2,2], scope='pool3')
+      net=max.pool2d(net,t,[2,2], scope='pool3')
       net=slim.repeat(net, 3, slim.conv2d,512, [3,3], scope='conv4')
       net=max.pool2d(net,[2,2], scope='pool4')
       net=slim.repeat(net, 3, slim.conv2d,512, [3,3], scope='conv5')
@@ -163,6 +159,16 @@ def vgg16 (inputs):
       return net
   ```
 
+## Training Models 
+
+### Losses 
+### Training Loop 
+[2,2], scope='pool1')
+      net=slim.repeat(net, 2, slim.conv2d, 128, [3,3], scope='conv2')
+      net=max.pool2d(net,[2,2], scope='pool2')
+      net=slim.repeat(net, 3, slim.conv2d, 256, [3,3], scope='conv3')
+      net=max.pool2d(ne
+> Working Example : Training the VGG16 Layers 
     
       
       
