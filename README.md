@@ -134,7 +134,7 @@ with slim.arg_scope([slim.conv2d, slim.fully_connected],
   
 ```
 
-> Working Example : Specifying the VGG16 Layers 
+Working Example : Specifying the VGG16 Layers 
 png: ![VGG16](http://book.paddlepaddle.org/03.image_classification/image/vgg16.png)
 
  ```python
@@ -159,8 +159,7 @@ def vgg16 (inputs):
       net=slim.fully_connected(net,4096, scope='fc7')
       net=slim.dropout(net,0.5,scope='dropout7')
       net=slim.fully_connected(net,1000, activation_fn, scope='fc8')
-  
-  return net
+      return net
   ```
 
     
