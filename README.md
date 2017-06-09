@@ -55,7 +55,23 @@ AvgPool2D|slim.avg_pool2D
 Dropout|slim.dropout
 Flatten|slim.flatten
 MaxPool2D|slim.max_pool2d
-OneHotEncoding|slim.one_ohot_encoding
+OneHotEncoding|slim.one_hot_encoding
+
+TF_slim also provides two meta-operation called ```repeat```and ```stack```that allow users to reapeatetly perform the same operation
+
+```python
+net=....
+net=slim.conv2d[net, 256, [3,3], scope='conv3_1')
+net=slim.conv2d[net, 256, [3,3], scope='conv3_2')
+net=slim.conv2d[net, 256, [3,3], scope='conv3_2')
+net=slim.max_pool_2d(net, [2,2], scope='pool2')
+```
+can be replaced by 
+```python
+net=slim.repeat(net,3,slim.conv2d, 256,[3,3], scope='conv3')
+net=slim.max_pool_2d(net, [2,2], scope='pool2']
+``` 
+
 
 
 
