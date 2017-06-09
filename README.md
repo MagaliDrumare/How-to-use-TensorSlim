@@ -59,7 +59,7 @@ OneHotEncoding|slim.one_hot_encoding
 
 TF_slim also provides two meta-operation called ```repeat```and ```stack```that allow users to reapeatetly perform the same operation
 
-* slim.repeat 
+* ```slim.repeat ```
 
 ```python
 
@@ -76,7 +76,7 @@ net=slim.max_pool_2d(net, [2,2], scope='pool2']
 
 ```
 
-* slim.stack 
+* ```slim.stack ```
 
 
 
