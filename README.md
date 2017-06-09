@@ -161,8 +161,8 @@ def vgg16 (inputs):
       net=slim.fully_connected(net,1000, activation_fn, scope='fc8')
   
   return net
-     
-     ```
+  ```
+
     
       
       
