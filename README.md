@@ -94,7 +94,7 @@ x=slim.stack(x, slim.conv2d,[(32,[3,3]),(32,[1,1]),(64,[3,3]),(64,[1,1]), scope=
 
 TF_Slim adds a new scoping mechanism called ```arg_scope``` used to simplify the code. 
 
-```python 
+````python 
 net=slim.conv2d(inputs, 64, [11,11],4, padding='SAME', 
 weights_initializer=tf.truncated_normal_initializer(stddev=0.01), 
 weights_regularizer=slim.l2_regularizer(0.0005), scope='conv1')
@@ -117,7 +117,8 @@ net=slim.conv2d(input, 64,[11,11], scope='conv1')
 net=slim.conv2d(input, 128,[11,11],padding='VADID', scope='conv2')
 net=slim.conv2d(input, 256,[11,11], scope='conv3')
 
-``` 
+`````
+
 Another example of code.the first ```arg_scope```applies ```weights_initializer``` and ```weights_regularizer``` to the ```conv2d``` and ```fully_connected``` layers in the scope. In the second ```arg scope ``` applies default arguments to 
 ```conv2d```. In the fully_coonected layer, the activation function is not activated : ```activation_fn=None ```. 
 
@@ -156,8 +157,8 @@ def vgg16 (inputs):
       net=slim.fully_connected(net,4096, scope='fc7')
       net=slim.dropout(net,0.5,scope='dropout7')
       net=slim.fully_connected(net,1000, activation_fn, scope='fc8')
-      return net
-  ```
+      return net
+```
 
 ## Training Models 
 
