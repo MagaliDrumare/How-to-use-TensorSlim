@@ -159,7 +159,10 @@ def vgg16 (inputs):
       net=slim.fully_connected(net,4096, scope='fc7')
       net=slim.dropout(net,0.5,scope='dropout7')
       net=slim.fully_connected(net,1000, activation_fn, scope='fc8')
-      return net```
+      return net
+      
+      
+      ```
     
       
       
