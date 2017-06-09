@@ -119,13 +119,13 @@ net=slim.conv2d(input, 256,[11,11], scope='conv3')
 
 ``` 
 Another example of code.the first ```arg_scope```applies ```weights_initializer``` and ```weights_regularizer``` to the ```conv2d``` and ```fully_connected``` layers in the scope. In the second ```arg scope ``` applies default arguments to 
-```conv2d```. ```activation_fn=None ```means activation function is not activated. 
+```conv2d```. In the fully_coonected layer, the activation function is not activated : ```activation_fn=None ```. 
 
 ```python
 with slim.arg_scope([slim.conv2d, slim.fully_connected],
-activation_fn=tf.nn.relu, 
-weights_initializer=tf.truncated_normal_initializer(stddev=0.01),
-weights_regulizer=slim.l2.regularizer(0.00005)):
+      activation_fn=tf.nn.relu, 
+      weights_initializer=tf.truncated_normal_initializer(stddev=0.01),
+      weights_regulizer=slim.l2.regularizer(0.00005)):
   with slim.arg_scope ([slim.conv2d, stride=1,padding='SAME'): 
   
   net=slim.conv2d(inputs, 64,[11,11], padding='VALID', scope='conv1')
