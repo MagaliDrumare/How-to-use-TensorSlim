@@ -48,5 +48,15 @@ TF_Slim provides standard implementations for numerous components for building n
 Layer	| Tf-Slim 
 ------|--------
 BiasAdd |slim.bias_add
+BatchNorm|slim.bias_norm 
+Conv2d| slim.conv2d
+FullyConnected | slim.fully_conected
+AvgPool2D|slim.avg_pool2D
+Dropout|slim.dropout
+Flatten|slim.flatten
+MaxPool2D|slim.max_pool2d
+OneHotEncoding|slim.one_ohot_encoding
+
+
 
 ### Scopes 
