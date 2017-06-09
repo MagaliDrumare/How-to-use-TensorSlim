@@ -41,7 +41,7 @@ device='/CPU:0')
 model_variables= slim.get_model_variable()
 ```
 
-### Layers 
+### Layers, slim.repeat, slim.stack 
 
 TF_Slim provides standard implementations for numerous components for building neral networks 
 
@@ -136,6 +136,41 @@ with slim.arg_scope([slim.conv2d, slim.fully_connected],
 
 > Working Example : Specifying the VGG16 Layers 
 png: ![VGG16](http://book.paddlepaddle.org/03.image_classification/image/vgg16.png)
+
+```python
+def vgg16 (inputs): 
+      with slim.arg_scope([slim.conv2d, slim.fully_connected], 
+      activation_fn=tf.nn.relu 
+      weights_initializers=tf.truncated_normal_initializer (0.0, 0.01),
+      weights_regularizer=slim.l2.regularizer(0.0005): 
+      
+      net=slim.repeat(inputs, 2, slim.conv2d, 64, [3,3], scope='conv1')
+      net=max.pool2d(net,[2,2], scope='pool1')
+      net=slim.repeat(net, 2, slim.conv2d, 128, [3,3], scope='conv2')
+      net=max.pool2d(net,[2,2], scope='pool2')
+      net=slim.repeat(net, 3, slim.conv2d, 256, [3,3], scope='conv3')
+      net=max.pool2d(net,[2,2], scope='pool3')
+      net=slim.repeat(net, 3, slim.conv2d,512, [3,3], scope='conv4')
+      net=max.pool2d(net,[2,2], scope='pool4')
+      net=slim.repeat(net, 3, slim.conv2d,512, [3,3], scope='conv5')
+      net=max.pool2d(net,[2,2], scope='pool5')
+      net=slim.fully_connected(net,4096, scope='fc6')
+      net=slim.dropout(net,0.5,scope='dropout6')
+      net=slim.fully_connected(net,4096, scope='fc7')
+      net=slim.dropout(net,0.5,scope='dropout7')
+      net=slim.fully_connected(net,1000, activation_fn, scope='fc8')
+      return net```
+    
+      
+      
+      
+      
+      
+      
+      
+      
+
+```
 
 
 
