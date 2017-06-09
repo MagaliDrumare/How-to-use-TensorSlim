@@ -1,8 +1,8 @@
 # TensorFlow-Slim 
 
-This README is a summary of this README aboout TF-slim written by Sergio Guadarrama and Nathan Siberman https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/slim
+This README is a summary of this README aboout TF-Slim written by Sergio Guadarrama and Nathan Siberman https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/slim
 
-
+# What is TensorFlow-Slim? 
 TF-Slim is a lightweight library for defining, training and avaluating complex models in TensorFlow. 
 Components of TF-Slim can be freely miwed with native tensorflow, as well as other frameworks such as tf.contrib.learn 
 
@@ -57,7 +57,7 @@ Flatten|slim.flatten
 MaxPool2D|slim.max_pool2d
 OneHotEncoding|slim.one_hot_encoding
 
-TF_slim also provides two meta-operation called ```repeat```and ```stack```that allow users to reapeatetly perform the same operation
+TF_Slim also provides two meta-operation called ```repeat```and ```stack```that allow users to reapeatetly perform the same operation
 
 * ```slim.repeat ```
 
@@ -88,8 +88,37 @@ x=slim.conv2d(x,64,[1,1], scope='core/core_4')
 can be replaced by 
 x=slim.stack(x, slim.conv2d,[(32,[3,3]),(32,[1,1]),(64,[3,3]),(64,[1,1]), scope='core']
 
-
-
-
+```
 
 ### Scopes 
+
+TF_Slim adds a new scoping mechanism called ```arg_scope``` used to simplify the code 
+
+```python 
+net=slim.conv2d(inputs, 64, [11,11],4, padding='SAME', 
+weights_initializer=tf.truncated_normal_initializer(stddev=0.01), 
+weights_regularizer=slim.l2_regularizer(0.0005), scope='conv1')
+
+net=slim.conv2d(net, 128, [11,11],padding='VALID', 
+weights_initializer=tf.truncated_normal_initializer(stddev=0.01), 
+weights_regularizer=slim.l2_regularizer(0.0005), scope='conv2')
+
+net=slim.conv2d(net,256, [11,11],padding='SAME', 
+weights_initializer=tf.truncated_normal_initializer(stddev=0.01), 
+weights_regularizer=slim.l2_regularizer(0.0005), scope='conv3')
+
+can be replaced by 
+
+with slim.arg_scope([slim.conv2d], padding='SAME', 
+weights_initializer=tf.truncated_normal_initializer(stddev=0.01), 
+weights_regularizer=slim.l2_regularizer(0.0005))
+net=slim.conv2d(input, 64,[11,11], scope='conv1')
+net=slim.conv2d(input, 128,[11,11],padding='VADID', scope='conv2')
+net=slim.conv2d(input, 256,[11,11], scope='conv3')
+``` 
+
+
+
+
+
+
