@@ -134,6 +134,9 @@ with slim.arg_scope([slim.conv2d, slim.fully_connected],
   
 ```
 
+> Working Example : Specifying the VGG16 Layers 
+png: ![VGG16](http://book.paddlepaddle.org/03.image_classification/image/vgg16.png)
+
 
 
 
