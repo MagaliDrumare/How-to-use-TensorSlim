@@ -92,7 +92,7 @@ x=slim.stack(x, slim.conv2d,[(32,[3,3]),(32,[1,1]),(64,[3,3]),(64,[1,1]), scope=
 
 ### Scopes 
 
-TF_Slim adds a new scoping mechanism called ```arg_scope``` used to simplify the code 
+TF_Slim adds a new scoping mechanism called ```arg_scope``` used to simplify the code. 
 
 ```python 
 net=slim.conv2d(inputs, 64, [11,11],4, padding='SAME', 
@@ -112,10 +112,27 @@ can be replaced by
 with slim.arg_scope([slim.conv2d], padding='SAME', 
 weights_initializer=tf.truncated_normal_initializer(stddev=0.01), 
 weights_regularizer=slim.l2_regularizer(0.0005))
+
 net=slim.conv2d(input, 64,[11,11], scope='conv1')
 net=slim.conv2d(input, 128,[11,11],padding='VADID', scope='conv2')
 net=slim.conv2d(input, 256,[11,11], scope='conv3')
+
 ``` 
+Another example of code.the first ```arg_scope```applies ```weights_initializer``` and ```weights_regularizer``` to the ```conv2d``` and ```fully_connected``` layers in the scope. In the second ```arg scope ``` applies default arguments to 
+```conv2d```. ```activation_fn=None ```means activation function is not activated. 
+
+```python
+with slim.arg_scope([slim.conv2d, slim.fully_connected],
+activation_fn=tf.nn.relu, 
+weights_initializer=tf.truncated_normal_initializer(stddev=0.01),
+weights_regulizer=slim.l2.regularizer(0.00005)):
+  with slim.arg_scope ([slim.conv2d, stride=1,padding='SAME'): 
+  
+  net=slim.conv2d(inputs, 64,[11,11], padding='VALID', scope='conv1')
+  net=slim.con2d(net, 256,[5,5], weights_initializer(stddev=0.03), scope='conv2')
+  net=slim.fully_connected(net, 100, activation_fn=None, scope='fc')
+  
+```
 
 
 
