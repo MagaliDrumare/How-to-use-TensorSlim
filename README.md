@@ -256,7 +256,20 @@ We define a metric to be a performance measure that is not a loss function (loss
 2.Aggregation: Perform operations (sums,etc...) used to compute the metrics.
 3.Finalization: (optionally) perform anay operation to compute metrics values. 
 
+Keeping track of each ```value_op``` and ```update_op``` can be laborious. To deal with this, TF-Slim provides two convenience functions:
 
+```python
+# Aggregates the value and update ops in two lists:
+value_ops, update_ops = slim.metrics.aggregate_metrics(
+    slim.metrics.streaming_mean_absolute_error(predictions, labels),
+    slim.metrics.streaming_mean_squared_error(predictions, labels))
+
+# Aggregates the value and update ops in two dictionaries:
+names_to_values, names_to_updates = slim.metrics.aggregate_metric_map({
+    "eval/mean_absolute_error": slim.metrics.streaming_mean_absolute_error(predictions, labels),
+    "eval/mean_squared_error": slim.metrics.streaming_mean_squared_error(predictions, labels),
+})
+````
 
 
 
