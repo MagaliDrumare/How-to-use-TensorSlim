@@ -168,7 +168,12 @@ def vgg16(inputs):
 Training tensorflow models requires a model, a loss function, the gradient computation and a training routine that iteratively computes the gradients of the model weightsrelative to the loss ans updates the weights accordingly. 
 
 ### Losses 
-The loss function 
+The loss function define a quatity that we want to minimize. 
+* For classification problems : cross entropy between the true distribution and the predicted probabilty distribution across classes. 
+* For regression problems : summ-of-squares differences between the predicted and the true value. 
+* For multi-task learning models : use of multiple loss functions simultaneoulsly (sum of various loss functions) 
+
+
 
 
 ### Training Loop 
