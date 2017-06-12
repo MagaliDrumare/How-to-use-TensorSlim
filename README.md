@@ -174,10 +174,11 @@ The loss function define a quatity that we want to minimize.
 * For multi-task learning models : use of multiple loss functions simultaneoulsly (sum of various loss functions) 
 
 TF-Slim provides an easy to use mechanism for definingand keeping track of the loss funtions via the losses module. 
-> Working Example : Training the VGG16 Layers 
 
-* Standard classification loss 
 ```python
+#Standard classification loss 
+
+#Import the data : 
 import tensorflow as tf 
 vgg=tf.contrib.slim.nets.vgg
 
@@ -189,9 +190,6 @@ predictions, _= vgg.vgg_16(images)
 
 #define the loss functions ans get the total loss 
 loss=slim.losses.softmax_cross_entropy(predictions, labels)```
-
-
-
 
 
 ### Training Loop 
