@@ -250,6 +250,19 @@ train_tensor= slim.learning.create_train_op(total_loss,optimizer)
 slim.learning.train(train_tensor,train_log_dir)
 ```
 
+## Evaluating the models 
+We define a metric to be a performance measure that is not a loss function (losses are directly optimized during training) but which we are still interested in the purpose of evaluating our model. TF-Slim provides a set of metrics opérations that make evaluating models easy. Computing the value of a metric can be divided in three parts: 
+1.Initialization: Initialize the variables used to compute the metrics. 
+2.Aggregation: Perform operations (sums,etc...) used to compute the metrics.
+3.Finalization: (optionally) perform anay operation to compute metrics values. 
+
+
+
+
+
+
+
+
 
 
 
