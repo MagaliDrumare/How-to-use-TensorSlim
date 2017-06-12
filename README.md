@@ -43,7 +43,7 @@ model_variables= slim.get_model_variable()
 
 ### Layers, slim.repeat, slim.stack 
 
-TF_Slim provides standard implementations for numerous components for building neral networks 
+TF-Slim provides standard implementations for numerous components for building neral networks 
 
 Layer	| Tf-Slim 
 ------|--------
@@ -57,7 +57,7 @@ Flatten|slim.flatten
 MaxPool2D|slim.max_pool2d
 OneHotEncoding|slim.one_hot_encoding
 
-TF_Slim also provides two meta-operations called ```repeat```and ```stack```that allow users to repeatedly perform the same operation.
+TF-Slim also provides two meta-operations called ```repeat```and ```stack```that allow users to repeatedly perform the same operation.
 
 * ```slim.repeat ```
 
@@ -92,7 +92,7 @@ x=slim.stack(x, slim.conv2d,[(32,[3,3]),(32,[1,1]),(64,[3,3]),(64,[1,1]), scope=
 
 ### Scopes 
 
-TF_Slim adds a new scoping mechanism called ```arg_scope``` used to simplify the code. 
+TF-Slim adds a new scoping mechanism called ```arg_scope``` used to simplify the code. 
 
 ````python 
 net=slim.conv2d(inputs, 64, [11,11],4, padding='SAME', 
@@ -169,14 +169,15 @@ Training tensorflow models requires a model, a loss function, the gradient compu
 
 ### Losses 
 The loss function define a quatity that we want to minimize. 
-* For classification problems : cross entropy between the true distribution and the predicted probabilty distribution across classes. 
+* For classification problems : cross entropy between the true distribution and the predicted probabilty distribution across classes 
 * For regression problems : sum-of-squares differences between the predicted and the true value. 
 * For multi-task learning models : use of multiple loss functions simultaneoulsly (sum of various loss functions) 
 
-TF-Slim provides an easy to use mechanism for definingand keeping track of the loss funtions via the losses module. 
+TF-Slim provides an easy to use mechanism for defining and keeping track of the loss funtions via the losses module: ```slim.lossses.softmax_cross_entropy```, ```slim.losses.sum_of_square```,```slim.losses.get_total_loss```.
 
+> Standard classification loss 
 ```python
-#Standard classification loss 
+
 
 #Import the data : 
 import tensorflow as tf 
@@ -190,10 +191,31 @@ predictions, _= vgg.vgg_16(images)
 
 #define the loss functions ans get the total loss 
 loss=slim.losses.softmax_cross_entropy(predictions, labels) 
+
 ```
 
+> Multi-tasks model that produces multiple outputs 
+
+```python 
+
+#Load the image and labels 
+images, scene_labels, depth_labels=.....
+
+#Create the model 
+scene_predictions, depth_predictions=CreateMultiTaskModel(images)
+
+#Define the loss functions ans get the total loss 
+classification_loss= slim.losses.softmax_cross_entropy(scene_predictions,scene_labels)
+sum_of_square_loss = slim.losses.sum_of_squares(depth_predictions, depth_labels)
+
+#The following two lines have the same effect: 
+total_loss=classification_loss + sum_of_square_loss
+total_loss=slim.losses.get_total_loss(add_regularization_losses=False)
+
+```
 
 ### Training Loop 
+TF-Slim provides 
 > Working Example : Training the VGG16 Layers 
     
       
