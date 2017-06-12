@@ -170,8 +170,26 @@ Training tensorflow models requires a model, a loss function, the gradient compu
 ### Losses 
 The loss function define a quatity that we want to minimize. 
 * For classification problems : cross entropy between the true distribution and the predicted probabilty distribution across classes. 
-* For regression problems : summ-of-squares differences between the predicted and the true value. 
+* For regression problems : sum-of-squares differences between the predicted and the true value. 
 * For multi-task learning models : use of multiple loss functions simultaneoulsly (sum of various loss functions) 
+
+TF-Slim provides an easy to use mechanism for definingand keeping track of the loss funtions via the losses module. 
+> Working Example : Training the VGG16 Layers 
+
+* Standard classification loss 
+```python
+import tensorflow as tf 
+vgg=tf.contrib.slim.nets.vgg
+
+# Load the images and labels 
+images, labels=.....
+
+#Create the model 
+predictions, _= vgg.vgg_16(images)
+
+#define the loss functions ans get the total loss 
+loss=slim.losses.softmax_cross_entropy(predictions, labels)```
+
 
 
 
