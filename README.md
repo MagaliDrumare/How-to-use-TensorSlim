@@ -4,7 +4,7 @@ This README is a summary of this README aboout TF-Slim written by Sergio Guadarr
 
 # What is TensorFlow-Slim? 
 TF-Slim is a lightweight library for defining, training and avaluating complex models in TensorFlow. 
-Components of TF-Slim can be freely miwed with native tensorflow, as well as other frameworks such as tf.contrib.learn 
+Components of TF-Slim can be freely mixed with native tensorflow, as well as other frameworks such as tf.contrib.learn 
 
 ## Usage 
 
@@ -16,7 +16,7 @@ import tensorflow.contrib.slim as slim
 
 TF-Slim is a library that makes building, training, evaluation neural network simple: 
 
-* Allows the user to define models more compactly by eliminating boilerplate code. This is accomplished through the use of   **argument scoping**, **high level layers** and **variables**. This tools increase the readability maintainability, reduce the likelihood of an error from copy and pasting the hyperparameter values ans simplifies hyperparameters tuning. 
+* Allows the user to define models more compactly by eliminating boilerplate code. This is accomplished through the use of   **argument scoping**, **high level layers** and **variables**. This tools increase the readability and maintainability, reduce the likelihood of an error from copy and pasting the hyperparameter values ans simplifies hyperparameters tuning. 
 
 * Makes developping models simple by providing commonly used **regularizer** 
 
@@ -57,7 +57,7 @@ Flatten|slim.flatten
 MaxPool2D|slim.max_pool2d
 OneHotEncoding|slim.one_hot_encoding
 
-TF_Slim also provides two meta-operation called ```repeat```and ```stack```that allow users to reapeatetly perform the same operation
+TF_Slim also provides two meta-operations called ```repeat```and ```stack```that allow users to repeatedly perform the same operation.
 
 * ```slim.repeat ```
 
@@ -165,7 +165,12 @@ def vgg16(inputs):
 
 ## Training Models 
 
+Training tensorflow models requires a model, a loss function, the gradient computation and a training routine that iteratively computes the gradients of the model weightsrelative to the loss ans updates the weights accordingly. 
+
 ### Losses 
+The loss function 
+
+
 ### Training Loop 
 > Working Example : Training the VGG16 Layers 
     
