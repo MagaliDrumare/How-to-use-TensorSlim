@@ -189,7 +189,8 @@ images, labels=.....
 predictions, _= vgg.vgg_16(images)
 
 #define the loss functions ans get the total loss 
-loss=slim.losses.softmax_cross_entropy(predictions, labels)```
+loss=slim.losses.softmax_cross_entropy(predictions, labels) 
+```
 
 
 ### Training Loop 
