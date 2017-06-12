@@ -221,9 +221,38 @@ For example, once we've specified the model, the loss function and the optimizat
 > Working Example : Training the VGG16 Layers
 
 ```python
+import tensorflow as tf 
+slim=tf.contrib.slim
+vgg=tf.contrib.slim.nets.vgg
+....
+
+train_log_dir=....
+if not tf.gfile.Exists(train_log_dir): 
+tf.gfile.MakeDirs(train_log_dir)
+
 with tf.Graph().as_default():
-#
+#Set up the data loading 
 images, labels =....
+
+#Define the model: 
+predictions=vgg.vgg16(images, is_training=True)
+
+#Specify the loss function: 
+slim.losses.sofmax_cross_entropy(predictions,labels)
+total_loss=slim.losses.get_total_loss()
+tf.summary.scalar('losses/total_loss', total_loss)
+
+#Specify the optimization scheme: Optimizer
+optimizer=tf.train.GradientDescentOptimizer(learning_rate=0.001)
+
+#Train
+train_tensor= slim.learning.create_train_op(total_loss,optimizer)
+slim.learning.train(train_tensor,train_log_dir)
+```
+
+
+
+
 
 
     
