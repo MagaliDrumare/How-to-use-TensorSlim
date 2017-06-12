@@ -215,8 +215,17 @@ total_loss=slim.losses.get_total_loss(add_regularization_losses=False)
 ```
 
 ### Training Loop 
-TF-Slim provides 
-> Working Example : Training the VGG16 Layers 
+TF-Slim provides a Train function that repeatedly measures the loss, computes gradients and saves the model to disk. 
+For example, once we've specified the model, the loss function and the optimization scheme, we can call ```slim.learning.create_train_op``` and ```slim.learning.train``` to perform the optimization. 
+
+> Working Example : Training the VGG16 Layers
+
+```python
+with tf.Graph().as_default():
+#
+images, labels =....
+
+
     
       
       
