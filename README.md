@@ -26,7 +26,6 @@ TF-Slim is a library that makes building, training, evaluation neural network si
 TF-Slim is composed of several parts which were design to exist independently: arg_scope, data, evaluation, layers, learning, losses, metrics, nets, queues, regularizers, variables. 
 
 ## Defining Models 
-
 Models can be defined by using variables, layers and scopes. 
 
 ### Variables 
